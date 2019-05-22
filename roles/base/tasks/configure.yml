@@ -1,0 +1,15 @@
+---
+
+- name: CONFIGURE | Set Max Inotify User watches
+  lineinfile:
+    create: yes
+    state: present
+    path: /etc/sysctl.conf
+    line: 'fs.inotify.max_user_watches=524288'
+    regexp: '^fs\.inotify\.max_user_watches'
+  when:
+    vars['base']['configure']['setInotify'] == true
+
+- name: CONFIGURE | Reload sysctl.conf
+  shell: |
+    sysctl -p 

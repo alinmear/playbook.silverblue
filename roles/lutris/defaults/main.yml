@@ -1,0 +1,10 @@
+---
+fedora_workstation_latex: 'yes'
+fedora_workstation_multimedia: 'yes'
+fedora_workstation_java: 'yes'
+fedora_workstation_effitask: 'no'
+fedora_workstation_rust: 'no'
+fedora_workstation_qt5: 'no'
+fedora_workstation_snapd: 'no'
+fedora_workstation_powershell: 'no'
+fedora_workstation_nvidia: 'yes'

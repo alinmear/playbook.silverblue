@@ -1,0 +1,67 @@
+---
+
+- name: FLATPAK | Install Collection
+  flatpak:
+    name: "{{ item }}"
+    remote: flathub
+    method: system
+    state: present
+  with_items:
+    - fr.handbrake.ghb
+    - com.makemkv.MakeMKV
+    - com.discordapp.Discord
+    - com.github.wwmm.pulseeffects
+    - com.obsproject.Studio
+    - com.spotify.Client
+    - com.transmissionbt.Transmission
+    - com.valvesoftware.Steam
+    - com.visualstudio.code
+    - me.kozec.syncthingtk
+    #- net.lutris.Lutris
+    - net.xmind.XMind8
+    - org.filezillaproject.Filezilla
+    - org.freedesktop.Platform
+    - org.freedesktop.Platform
+    - org.freedesktop.Platform.Compat.i386
+    - org.freedesktop.Platform.GL.nvidia-418-56
+    - org.freedesktop.Platform.ffmpeg
+    - org.freedesktop.Platform.html5-codecs
+    - org.freedesktop.Sdk
+    - org.freedesktop.Sdk.Extension.dotnet
+    - org.gabmus.hydrapaper
+    - org.gimp.GIMP
+    - org.gnome.Boxes
+    - org.gnome.Builder
+    - org.gnome.Calculator
+    - org.gnome.Calendar
+    - org.gnome.Evince
+    - org.gnome.Evolution
+    - org.gnome.Geary
+    - org.gnome.PasswordSafe
+    - org.gnome.Platform
+    - org.gnome.Platform
+    #- org.gnome.Rhythmbox3
+    - org.gnome.Music
+    - org.gnome.Sdk
+    - org.gnome.Shotwell
+    - org.gnome.Todo
+    - org.gnome.Totem
+    - org.gnome.Totem.Codecs
+    - org.gtk.Gtk3theme.Arc-Dark
+    - org.inkscape.Inkscape
+    - org.kde.KStyle.Adwaita
+    - org.kde.KStyle.Adwaita
+    - org.kde.Platform
+    - org.kde.Platform
+    - org.kde.PlatformTheme.QGnomePlatform
+    - org.kde.kdenlive
+    - org.libreoffice.LibreOffice
+    - org.musescore.MuseScore
+    - org.nextcloud.Nextcloud
+    - org.remmina.Remmina
+    - org.signal.Signal
+    - org.telegram.desktop
+    - org.videolan.VLC
+    - org.videolan.VLC.Plugin.bdj
+    - org.videolan.VLC.Plugin.fdkaac
+    - org.videolan.VLC.Plugin.makemkv

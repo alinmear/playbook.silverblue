@@ -1,0 +1,7 @@
+---
+
+- name: OSTREE | Install Apps
+  shell: |
+    rpm-ostree install tilix lutris wine
+  when:
+    vars['base']['rpm-ostree']['enable'] == true

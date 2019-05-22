@@ -1,0 +1,33 @@
+---
+
+- name: LUTRIS | flatpak - create Working Dir
+  tempfile:
+    state: directory
+    suffix: build
+  register: builddir
+
+- name: LUTRIS | flatpak - build
+  shell: |
+    cd {{ builddir.path }}
+    git clone --recursive https://github.com/RobLoach/net.lutris.Lutris.git
+    cd net.lutris.Lutris
+    flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak install flathub org.freedesktop//18.08
+    flatpak install flathub org.freedesktop.Platform//18.08
+    flatpak-builder --repo=lutris --force-clean build-dir net.lutris.Lutris.yml
+    flatpak remote-add lutris lutris --no-gpg-verify
+    #flatpak install lutris net.lutris.Lutris
+  when:
+    builds.lutris == true
+
+- name: LUTRIS | flatpak - remove Working Dir
+  file:
+    path: "{{ builddir.path }}"
+    state: absent
+
+- name: LUTRIS | flatpak - install
+  flatpak:
+    name: "net.lutris.Lutris"
+    remote: flathub
+    method: system
+    state: present

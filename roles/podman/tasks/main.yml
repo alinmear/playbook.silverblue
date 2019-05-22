@@ -1,0 +1,69 @@
+---
+- name: REPO | Setup RPM-Fusion
+  shell: |
+    dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  when:
+    fedora_repo_rpmfusion == 'yes' and fedora_repo_negativo17 != 'yes'
+
+- name: REPO | Setup Flathub
+  shell: |
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  when:
+    fedora_repo_flathub == 'yes'
+
+- name: REPO | Setup Fedy
+  shell: |
+    dnf install -y https://dl.folkswithhats.org/fedora/$(rpm -E %fedora)/RPMS/fedy-release.rpm
+  when:
+    fedora_repo_fedy == 'yes'
+  #register: result
+  #changed_when: "result.rc == 2"
+  #failed_when: "result.rc == 1"
+
+- name: REPO | Setup Negativo17
+  shell: |
+    dnf config-manager --add-repo=https://negativo17.org/repos/fedora-steam.repo
+    dnf config-manager --add-repo=https://negativo17.org/repos/fedora-multimedia.repo
+    dnf config-manager --add-repo=https://negativo17.org/repos/fedora-spotify.repo
+    #dnf config-manager --add-repo=https://negativo17.org/repos/fedora-flash-plugin.repo
+  when:
+    fedora_repo_negativo17 == 'yes' and fedora_repo_rpmfusion != 'yes'
+
+- name: REPO | Setup Docker
+  shell: |
+    dnf config-manager --add-repo=https://download.docker.com/linux/fedora/docker-ce.repo
+  when:
+    fedora_repo_docker == 'yes'
+
+- name: REPO | Setup Google Chrome
+  blockinfile:
+    path: /etc/yum.repos.d/google-chrome.repo
+    create: yes
+    block: |
+      [google-chrome]
+      name=google-chrome
+      baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+  when:
+    fedora_repo_google == 'yes'
+
+- name: REPO | Setup Visual Studio Code
+  shell: |
+    rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+  when:
+    fedora_repo_microsoft == 'yes'
+
+- name: REPO | Setup Powershell Repos
+  shell: |
+    dnf config-manager --add-repo=https://packages.microsoft.com/config/rhel/7/prod.repo
+  when:
+    fedora_repo_microsoft == 'yes'
+
+- name: REPO | Setup Virtualbox
+  shell: |
+    dnf config-manager --add-repo http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+  when:
+    fedora_repo_virtualbox == 'yes'

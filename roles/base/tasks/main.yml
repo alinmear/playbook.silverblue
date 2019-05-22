@@ -1,0 +1,42 @@
+---
+- name: BASE | flatpaks
+  include: flatpaks.yml
+  tags:
+    - base_flatpaks
+  when:
+    vars['base']['flatpaks']['enable'] == true
+
+- name: BASE | lutris
+  include: lutris.yml
+  tags:
+    - base_lutris
+  when:
+    vars['base']['lutris']['enable'] == true and vars['base']['lutris']['flatpak'] == false
+
+- name: BASE | lutris - flatpak
+  include: lutris.flatpak.yml
+  tags:
+    - base_lutris_flatpak
+  when:
+    vars['base']['lutris']['enable'] == true and vars['base']['lutris']['flatpak'] == true
+
+- name: BASE | lutris - postconfig
+  include: lutris.postconfig.yml
+  tags:
+    - base_lutris_postconfig
+  when:
+    vars['base']['lutris']['enable'] == true and vars['base']['lutris']['postconfig'] == true
+
+- name: BASE | nvidia
+  include: nvidia.yml
+  tags:
+    - base_nvidia
+  when:
+    vars['base']['nvidia']['enable'] == true
+
+- name: BASE | configure
+  include: configure.yml
+  tags:
+    - base_configure
+  when:
+    vars['base']['rpm-ostree']['enable'] == true

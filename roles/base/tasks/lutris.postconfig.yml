@@ -1,0 +1,23 @@
+---
+
+- name: LUTRIS | postconfig- Setup WINEESYNC
+  lineinfile:
+    create: yes
+    state: present
+    path: "{{ item }}"
+    line: 'DefaultLimitNOFILE=1048576'
+    regexp: '^DefaultLimitNOFILE'
+  with_items:
+    - "/etc/systemd/system.conf"
+    - "/etc/systemd/user.conf"
+
+- name: LUTRIS | postconfigure - Overwatch Workarround
+  blockinfile:
+    path: /etc/profile.d/lutris.sh
+    create: yes
+    block: |
+      # Disable Lutris Runtime using libs from .local/share/lutris instead of system libs
+      export LUTRIS_RUNTIME=0
+      # Fix Ugly Wine Fonts
+      # See https://bbs.archlinux.org/viewtopic.php?id=217309
+      export FREETYPE_PROPERTIES="truetype:interpreter-version=35"

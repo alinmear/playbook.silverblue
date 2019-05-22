@@ -1,0 +1,24 @@
+---
+- name: 'Silverblue | Deploy - Playbook'
+  # hosts: all
+  hosts: 'localhost'
+  connection: local
+  gather_facts: true
+
+  #vars:
+
+  vars_files:
+    - vars/setup.yml
+
+#  pre_tasks:
+#    - name: PRETASK | Install libselinux-python
+#      shell: |
+#        rpm-ostree install libselinux-python
+
+  tasks:
+
+  post_tasks:
+
+  roles:
+    - base
+    #- podman

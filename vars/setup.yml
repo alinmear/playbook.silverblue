@@ -1,0 +1,26 @@
+base: {
+      nvidia: {
+        enable: true
+      },
+      flatpaks: {
+        enable: false,
+        pkgs: [
+
+        ]
+      },
+      configure: {
+        enable: true,
+        setInotify: true
+      },
+      lutris: {
+        enable: false,
+        postconfig: true,
+        flatpak: false
+      },
+      rpm-ostree: {
+        enable: false,
+        pkgs: [
+
+        ]
+      }
+}
