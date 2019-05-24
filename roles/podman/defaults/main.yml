@@ -1,9 +1,1 @@
 ---
-fedora_repo_rpmfusion: 'no'
-fedora_repo_fedy: 'no'
-fedora_repo_negativo17: 'yes'
-fedora_repo_google: 'yes'
-fedora_repo_microsoft: 'yes'
-fedora_repo_flathub: 'yes'
-fedora_repo_docker: 'yes'
-fedora_repo_virtualbox: 'yes'

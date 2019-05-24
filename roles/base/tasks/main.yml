@@ -4,39 +4,47 @@
   tags:
     - base_flatpaks
   when:
-    vars['base']['flatpaks']['enable'] == true
+    vars.base.flatpaks.enable == true
 
 - name: BASE | lutris
   include: lutris.yml
   tags:
     - base_lutris
   when:
-    vars['base']['lutris']['enable'] == true and vars['base']['lutris']['flatpak'] == false
+    vars.base.lutris.enable == true and vars.base.lutris.flatpak == false
 
 - name: BASE | lutris - flatpak
   include: lutris.flatpak.yml
   tags:
     - base_lutris_flatpak
   when:
-    vars['base']['lutris']['enable'] == true and vars['base']['lutris']['flatpak'] == true
+    vars.base.lutris.enable == true and vars.base.lutris.flatpak == true
 
 - name: BASE | lutris - postconfig
   include: lutris.postconfig.yml
   tags:
     - base_lutris_postconfig
   when:
-    vars['base']['lutris']['enable'] == true and vars['base']['lutris']['postconfig'] == true
+    vars.base.lutris.enable == true and vars.base.lutris.postconfig == true
 
 - name: BASE | nvidia
   include: nvidia.yml
   tags:
     - base_nvidia
   when:
-    vars['base']['nvidia']['enable'] == true
+    vars.base.nvidia.enable == true
 
 - name: BASE | configure
   include: configure.yml
   tags:
     - base_configure
   when:
-    vars['base']['rpm-ostree']['enable'] == true
+    vars.base.configure.enable == true
+
+- name: BASE | rpm-ostree
+  include: rpm-ostree.yml
+  tags:
+    - base_ostree
+  when:
+    vars.base.ostree.enable == true
+

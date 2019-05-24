@@ -1,0 +1,6 @@
+---
+
+- name: LUTRIS | Install via rpm-ostree
+  command: rpm-ostree install lutris wine
+  # TODO: Better check
+  ignore_errors: yes

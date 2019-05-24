@@ -9,7 +9,10 @@
     regexp: '^fs\.inotify\.max_user_watches'
   when:
     vars['base']['configure']['setInotify'] == true
+  register: reload_needed
 
 - name: CONFIGURE | Reload sysctl.conf
   shell: |
     sysctl -p 
+  when:
+    reload_needed.changed == true

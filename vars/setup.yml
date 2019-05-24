@@ -4,9 +4,6 @@ base: {
       },
       flatpaks: {
         enable: true,
-        pkgs: [
-
-        ]
       },
       configure: {
         enable: true,
@@ -17,10 +14,7 @@ base: {
         postconfig: true,
         flatpak: false
       },
-      rpm-ostree: {
+      ostree: {
         enable: true,
-        pkgs: [
-
-        ]
       }
 }
