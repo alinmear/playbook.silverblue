@@ -3,7 +3,7 @@ base: {
         enable: true
       },
       flatpaks: {
-        enable: false,
+        enable: true,
         pkgs: [
 
         ]
@@ -13,12 +13,12 @@ base: {
         setInotify: true
       },
       lutris: {
-        enable: false,
+        enable: true,
         postconfig: true,
         flatpak: false
       },
       rpm-ostree: {
-        enable: false,
+        enable: true,
         pkgs: [
 
         ]

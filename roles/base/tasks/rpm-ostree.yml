@@ -1,7 +1,6 @@
 ---
+- name: OSTREE | Install Base
+  command: "rpm-ostree install {{  vars['base']['ostree']['base'] }}"
 
-- name: OSTREE | Install Apps
-  shell: |
-    rpm-ostree install tilix lutris wine
-  when:
-    vars['base']['rpm-ostree']['enable'] == true
+- name: OSTREE | Install Optional
+  command: "rpm-ostree install {{  vars['base']['ostree']['optional'] }}"

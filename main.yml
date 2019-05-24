@@ -9,6 +9,7 @@
 
   vars_files:
     - vars/setup.yml
+    - vars/base.yml
 
 #  pre_tasks:
 #    - name: PRETASK | Install libselinux-python

@@ -1,5 +1,3 @@
-ansible="./.ansible/bin/ansible-playbook main.yml"
-
 all: base podman
 
 base:

@@ -1,1 +1,88 @@
 ---
+ostree: {
+  base: [
+    "tilix",
+    "gnome-tweak-tool"
+  ],
+  optional: [
+    "lutris",
+    "wine"
+  ]
+}
+
+flatpak: {
+  config: {
+    bundles: {
+      gnome: true,
+      themes: true,
+      multimedia: true,
+      messaging: true,
+      office: true,
+      design: true,
+      gaming: true,
+      development: true,
+      synctools: true
+    }
+  },
+  bundles: {
+    gnome: [
+      "com.github.wwmm.pulseeffects",
+      "org.gabmus.hydrapaper",
+      "org.gimp.GIMP",
+      "org.gnome.Boxes",
+      "org.gnome.Builder",
+      "org.gnome.Calculator",
+      "org.gnome.Calendar",
+      "org.gnome.Evince",
+      "org.gnome.Evolution",
+      "org.gnome.Geary",
+      "org.gnome.PasswordSafe",
+      "org.gnome.Platform",
+      "org.gnome.Platform",
+      "org.gnome.Rhythmbox3",
+      "org.gnome.Music",
+      "org.gnome.Sdk",
+      "org.gnome.Shotwell",
+      "org.gnome.Todo",
+      "org.gnome.Totem",
+      "org.gnome.Totem.Codecs",
+      "org.remmina.Remmina",
+      "org.filezillaproject.Filezilla",
+      "com.transmissionbt.Transmission",
+      "me.kozec.syncthingtk",
+      "org.nextcloud.Nextcloud",
+
+    ],
+    themes: [
+      "org.gtk.Gtk3theme.Arc-Dark",
+      "org.kde.KStyle.Adwaita"
+    ],
+    multimedia: [
+      "com.spotify.Client",
+      "fr.handbrake.ghb",
+      "com.makemkv.MakeMKV",
+      "org.videolan.VLC",
+      "org.videolan.VLC.Plugin.bdj",
+      "org.videolan.VLC.Plugin.fdkaac",
+      "org.videolan.VLC.Plugin.makemkv",
+      "org.inkscape.Inkscape",
+      "org.kde.kdenlive"
+    ],
+    messaging: [
+      "org.signal.Signal",
+      "org.telegram.desktop"
+    ],
+    office: [
+      "net.xmind.XMind8",
+      "org.libreoffice.LibreOffice"
+    ],
+    gaming: [
+      "com.discordapp.Discord",
+      "com.valvesoftware.Steam",
+      "com.obsproject.Studio",
+    ],
+    development: [
+      "com.visualstudio.code",
+    ],
+}
+}

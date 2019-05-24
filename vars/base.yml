@@ -1,0 +1,25 @@
+# flatpak: {
+#   bundles: {
+#     gnome: [
+#     ],
+#     themes: [
+#     ],
+#     multimedia: [
+#     ],
+#     messaging: [
+#     ],
+#     office: [
+#     ],
+#     gaming: [
+#     ],
+#     development: [
+#     ],
+#   }
+# }
+
+# ostree: {
+#   base: [
+#   ],
+#   optional: [
+#   ]
+# }
