@@ -9,6 +9,8 @@
   with_items: "{{ vars.flatpak.bundles.gnome }}"
   # TODO: Better check
   ignore_errors: yes
+  when:
+    vars.flatpak.bundles.gnome == True
 
 - name: FLATPAK | Install Bundle Theme
   flatpak:
@@ -19,6 +21,8 @@
   with_items: "{{ vars.flatpak.bundles.themes }}"
   # TODO: Better check
   ignore_errors: yes
+  when:
+    vars.flatpak.bundles.themes == True
 
 - name: FLATPAK | Install Bundle Multimedia
   flatpak:
@@ -29,6 +33,8 @@
   with_items: "{{ vars.flatpak.bundles.multimedia }}"
   # TODO: Better check
   ignore_errors: yes
+  when:
+    vars.flatpak.bundles.multimedia == True
 
 - name: FLATPAK | Install Bundle Messaging
   flatpak:
@@ -39,6 +45,8 @@
   with_items: "{{ vars.flatpak.bundles.messaging }}"
   # TODO: Better check
   ignore_errors: yes
+  when:
+    vars.flatpak.bundles.messaging == True
 
 - name: FLATPAK | Install Bundle Office
   flatpak:
@@ -49,6 +57,8 @@
   with_items: "{{ vars.flatpak.bundles.office }}"
   # TODO: Better check
   ignore_errors: yes
+  when:
+    vars.flatpak.bundles.office == True
 
 - name: FLATPAK | Install Bundle Gaming
   flatpak:
@@ -59,6 +69,8 @@
   with_items: "{{ vars.flatpak.bundles.gaming }}"
   # TODO: Better check
   ignore_errors: yes
+  when:
+    vars.flatpak.bundles.gaming == True
 
 
 - name: FLATPAK | Install Bundle Development
@@ -70,3 +82,5 @@
   with_items: "{{ vars.flatpak.bundles.development }}"
   # TODO: Better check
   ignore_errors: yes
+  when:
+    vars.flatpak.bundles.development == True
