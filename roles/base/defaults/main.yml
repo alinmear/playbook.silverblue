@@ -9,6 +9,17 @@ ostree: {
     "wine"
   ]
 }
+workstation: {
+  base: [
+    "tilix",
+    "gnome-tweak-tool",
+    "toolbox"
+  ],
+  optional: [
+    "lutris",
+    "wine"
+  ]
+}
 
 flatpak: {
   config: {
@@ -84,5 +95,16 @@ flatpak: {
     development: [
       "com.visualstudio.code",
     ],
+  }
 }
-}
+
+gsettings:
+  tap-to-click:
+    key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
+    value: true
+  show-battery-percentage:
+    key: /org/gnome/interface/show-battery-percentage
+    value: true
+  natural-scroll:
+    key: /org/gnome/desktop/peripherals/touchpad
+    value: false

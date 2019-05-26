@@ -1,0 +1,6 @@
+---
+- name: Change dconf settings
+  dconf: key={{ item.value.key }}
+    value={{ item.value.value }}
+  with_dict: "{{ gsettings }}"
+  ignore_errors: true

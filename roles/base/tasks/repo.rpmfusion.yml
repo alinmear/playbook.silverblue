@@ -1,6 +1,7 @@
 ---
 
 - name: REPO | Create RPM Fusion Free
+  become: true
   blockinfile:
     path: /etc/yum.repos.d/rpmfusion-free.repo
     create: true
@@ -38,6 +39,7 @@
       gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever
 
 - name: REPO | Create RPM Fusion Free Updates
+  become: true
   blockinfile:
     path: /etc/yum.repos.d/rpmfusion-free-updates.repo
     create: true
@@ -74,6 +76,7 @@
 
 
 - name: REPO | Create RPM Fusion Free Updates Testing
+  become: true
   blockinfile:
     path: /etc/yum.repos.d/rpmfusion-free-updates-testing.repo
     create: true
@@ -110,6 +113,7 @@
 
 
 - name: REPO | Create RPM Fusion NonFree
+  become: true
   blockinfile:
     path: /etc/yum.repos.d/rpmfusion-nonfree.repo
     create: true
@@ -149,6 +153,7 @@
       gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever
 
 - name: REPO | Create RPM Fusion NonFree Updates
+  become: true
   blockinfile:
     path: /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
     create: true
@@ -185,6 +190,7 @@
       gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever
 
 - name: REPO | Create RPM Fusion NonFree Updates Testing
+  become: true
   blockinfile:
     path: /etc/yum.repos.d/rpmfusion-nonfree-updates-testing.repo
     create: true

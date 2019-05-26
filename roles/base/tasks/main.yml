@@ -1,4 +1,11 @@
 ---
+- name: BASE | Enable RPM Fusion Repo
+  include: repo.rpmfusion.yml
+  tags:
+    - base_rpmfusion
+  when:
+    vars.base.rpmfusion.enable == true
+
 - name: BASE | flatpaks
   include: flatpaks.yml
   tags:
@@ -48,3 +55,21 @@
   when:
     vars.base.ostree.enable == true
 
+- name: BASE | dnf workstation
+  include: workstation.yml
+  tags:
+    - base_workstation
+  when:
+    vars.base.workstation.enable == true
+
+- name: BASE | Custom Kernel Surface
+  include: surface.yml
+  tags:
+    - base_surface
+  when: vars.base.surface.enable == true
+  
+
+- name: BASE | Dconf Settings
+  include: dconf.yml
+  tags:
+    - base_dconf

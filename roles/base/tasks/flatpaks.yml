@@ -8,6 +8,7 @@
     method: system
 
 - name: FLATPAK | Install Bundle Gnome
+  become: true
   flatpak:
     name: "{{ item }}"
     remote: flathub
@@ -17,9 +18,10 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.gnome == True
+    vars.flatpak.config.bundles.gnome == True
 
 - name: FLATPAK | Install Bundle Theme
+  become: true
   flatpak:
     name: "{{ item }}"
     remote: flathub
@@ -29,9 +31,10 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.themes == True
+    vars.flatpak.config.bundles.themes == True
 
 - name: FLATPAK | Install Bundle Multimedia
+  become: true
   flatpak:
     name: "{{ item }}"
     remote: flathub
@@ -41,9 +44,10 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.multimedia == True
+    vars.flatpak.config.bundles.multimedia == True
 
 - name: FLATPAK | Install Bundle Messaging
+  become: true
   flatpak:
     name: "{{ item }}"
     remote: flathub
@@ -53,9 +57,10 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.messaging == True
+    vars.flatpak.config.bundles.messaging == True
 
 - name: FLATPAK | Install Bundle Office
+  become: true
   flatpak:
     name: "{{ item }}"
     remote: flathub
@@ -65,9 +70,10 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.office == True
+    vars.flatpak.config.bundles.office == True
 
 - name: FLATPAK | Install Bundle Gaming
+  become: true
   flatpak:
     name: "{{ item }}"
     remote: flathub
@@ -77,10 +83,11 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.gaming == True
+    vars.flatpak.config.bundles.gaming == True
 
 
 - name: FLATPAK | Install Bundle Development
+  become: true
   flatpak:
     name: "{{ item }}"
     remote: flathub
@@ -90,4 +97,4 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.development == True
+    vars.flatpak.config.bundles.development == True

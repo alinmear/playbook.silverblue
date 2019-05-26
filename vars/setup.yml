@@ -16,5 +16,14 @@ base: {
       },
       ostree: {
         enable: true,
+      },
+      workstation: {
+        enable: false,
+      },
+      rpmfusion: {
+        enable: true,
+      },
+      surface: {
+        enable: false,
       }
 }

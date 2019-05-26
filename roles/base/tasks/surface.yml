@@ -1,0 +1,91 @@
+---
+# TODO: make folder for repository configurable
+- name: Surface | Check if is installed
+  command: 'uname -r'
+  register: uname
+
+- name: Surface | set kernel as fact
+  set_fact:
+    kernel={{uname.stdout}}
+
+- name: Surface | print result
+  debug:
+      var: kernel 
+
+- name: Surface | create dev folder
+  file:
+    path: /home/alex/dev # required. Path to the file being managed.
+    state: directory
+  when: kernel.find("surface") == -1
+
+- name: Surface | clone jakedays surface repository
+  git:
+      dest: /home/alex/dev # required. The path of where the repository should be checked out. This parameter is required, unless C(clone) is set to C(no).
+      repo: https://github.com/jakeday/linux-surface.git # required. git, SSH, or HTTP(S) protocol address of the git repository.
+  when: kernel.find("surface") == -1
+
+- name: Surface | Create firmware dirs
+  become: true
+  file:
+    path: "{{ item }}" # required. Path to the file being managed.
+    state: directory
+  with_items:
+    - "/lib/firmware/intel/ipts"
+    - "/lib/firmware/1915"
+    - "/lib/firmware/mrvl"
+    - "/lib/firmware/mwlwifi"
+  when: kernel.find("surface") == -1
+
+- name: Surface | copy Surface Pro 4 Firmware ipts 1/2
+  become: true
+  unarchive:
+      src: /home/alex/dev/linux-surface/firmware/ipts_firmware_v78.zip # required. If C(remote_src=no) (default), local path to archive file to copy to the target server; can be absolute or relative. If C(remote_src=yes), path on the target server to existing archive file to unpack.,If C(remote_src=yes) and C(src) contains C(://), the remote machine will download the file from the URL first. (version_added 2.0). This is only for simple cases, for full download support use the M(get_url) module.
+      dest: /lib/firmware/intel/ipts # required. Remote absolute path where the archive should be unpacked.
+  when: kernel.find("surface") == -1
+
+- name: Surface | copy Surface Pro 4 Firmware ipts 2/2
+  become: true
+  unarchive:
+      src: /home/alex/dev/linux-surface/firmware/i915_firmware_skl.zip # required. If C(remote_src=no) (default), local path to archive file to copy to the target server; can be absolute or relative. If C(remote_src=yes), path on the target server to existing archive file to unpack.,If C(remote_src=yes) and C(src) contains C(://), the remote machine will download the file from the URL first. (version_added 2.0). This is only for simple cases, for full download support use the M(get_url) module.
+      dest: /lib/firmware/1915 # required. Remote absolute path where the archive should be unpacked.
+  when: kernel.find("surface") == -1
+
+- name: Surface | copy Surface Pro 4 Mrvl
+  become: true
+  unarchive:
+      src: /home/alex/dev/linux-surface/firmware/mrvl_firmware.zip # required. If C(remote_src=no) (default), local path to archive file to copy to the target server; can be absolute or relative. If C(remote_src=yes), path on the target server to existing archive file to unpack.,If C(remote_src=yes) and C(src) contains C(://), the remote machine will download the file from the URL first. (version_added 2.0). This is only for simple cases, for full download support use the M(get_url) module.
+      dest: /lib/firmware/mrvl # required. Remote absolute path where the archive should be unpacked.
+  when: kernel.find("surface") == -1
+
+- name: Surface | copy Surface Pro 4 Firmware mwlwifi
+  become: true
+  unarchive:
+      src: /home/alex/dev/linux-surface/firmware/mwlwifi_firmware.zip # required. If C(remote_src=no) (default), local path to archive file to copy to the target server; can be absolute or relative. If C(remote_src=yes), path on the target server to existing archive file to unpack.,If C(remote_src=yes) and C(src) contains C(://), the remote machine will download the file from the URL first. (version_added 2.0). This is only for simple cases, for full download support use the M(get_url) module.
+      dest: /lib/firmware/mwlwifi # required. Remote absolute path where the archive should be unpacked.
+  when: kernel.find("surface") == -1
+
+- name: Surface | add StollD repo
+  become: true
+  blockinfile:
+    path: /etc/yum.repos.d/linux-surface.repo
+    create: true
+    block: |
+      [linux-surface]
+      name=linux-surface
+      baseurl=https://gitlab.com/StollD/fedora-linux-surface-repo/raw/f$releasever/$basearch/
+      enabled=1
+      gpgcheck=1
+      repo_gpgcheck=1
+      gpgkey=https://gitlab.com/StollD/fedora-linux-surface-repo/raw/f$releasever/key.asc
+  when: kernel.find("surface") == -1
+
+- name: Surface | Install kernel and packages
+  become: true
+  package:
+    state: present # required. Whether to install (C(present)), or remove (C(absent)) a package. Other states depend on the underlying package module, i.e C(latest).
+    name: "{{item}}" # required. Package name, or package specifier with version, like C(name-1.0).,Be aware that packages are not always named the same and this module will not 'translate' them per distro.
+  with_items:
+    - linux-surface-secureboot
+    - kernel-surface
+    #- libwacom-surface
+  when: kernel.find("surface") == -1

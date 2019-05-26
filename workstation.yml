@@ -1,0 +1,16 @@
+---
+- name: 'Workstation | Deploy - Playbook'
+  hosts: workstations
+  gather_facts: true
+#  pre_tasks:
+#    - name: PRETASK | Install libselinux-python
+#      shell: |
+#        rpm-ostree install libselinux-python
+
+  tasks:
+
+  post_tasks:
+
+  roles:
+    - base
+    #- podman
