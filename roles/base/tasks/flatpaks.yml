@@ -1,4 +1,11 @@
 ---
+- name: FLATPAK | Enable Flathub repo
+  become: true
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: system
 
 - name: FLATPAK | Install Bundle Gnome
   flatpak:
@@ -10,7 +17,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.bundles.gnome == True
+    vars.config.flatpak.bundles.gnome == True
 
 - name: FLATPAK | Install Bundle Theme
   flatpak:
@@ -22,7 +29,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.bundles.themes == True
+    vars.config.flatpak.bundles.themes == True
 
 - name: FLATPAK | Install Bundle Multimedia
   flatpak:
@@ -34,7 +41,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.bundles.multimedia == True
+    vars.config.flatpak.bundles.multimedia == True
 
 - name: FLATPAK | Install Bundle Messaging
   flatpak:
@@ -46,7 +53,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.bundles.messaging == True
+    vars.config.flatpak.bundles.messaging == True
 
 - name: FLATPAK | Install Bundle Office
   flatpak:
@@ -58,7 +65,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.bundles.office == True
+    vars.config.flatpak.bundles.office == True
 
 - name: FLATPAK | Install Bundle Gaming
   flatpak:
@@ -70,7 +77,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.bundles.gaming == True
+    vars.config.flatpak.bundles.gaming == True
 
 
 - name: FLATPAK | Install Bundle Development
@@ -83,4 +90,4 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.bundles.development == True
+    vars.config.flatpak.bundles.development == True
