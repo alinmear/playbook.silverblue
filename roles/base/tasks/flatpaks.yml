@@ -17,7 +17,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.gnome == True
+    vars.flatpak.config.bundles.gnome == True
 
 - name: FLATPAK | Install Bundle Theme
   flatpak:
@@ -29,7 +29,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.themes == True
+    vars.flatpak.config.bundles.themes == True
 
 - name: FLATPAK | Install Bundle Multimedia
   flatpak:
@@ -41,7 +41,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.multimedia == True
+    vars.flatpak.config.bundles.multimedia == True
 
 - name: FLATPAK | Install Bundle Messaging
   flatpak:
@@ -53,7 +53,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.messaging == True
+    vars.flatpak.config.bundles.messaging == True
 
 - name: FLATPAK | Install Bundle Office
   flatpak:
@@ -65,7 +65,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.office == True
+    vars.flatpak.config.bundles.office == True
 
 - name: FLATPAK | Install Bundle Gaming
   flatpak:
@@ -77,7 +77,7 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.gaming == True
+    vars.flatpak.config.bundles.gaming == True
 
 
 - name: FLATPAK | Install Bundle Development
@@ -90,4 +90,4 @@
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.config.flatpak.bundles.development == True
+    vars.flatpak.config.bundles.development == True
