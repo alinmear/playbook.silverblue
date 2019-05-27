@@ -1,6 +1,6 @@
 # playbook.silverblue
 
-This playbook automates the provisioning of the modular fedora silverblue workstation. The playbook implements two roles for this tasks, base and podman.
+This playbook automates the provisioning of the modular fedora silverblue and regular workstation. The playbook implements two roles for this tasks, base and podman.
 
 ## Getting started
 
