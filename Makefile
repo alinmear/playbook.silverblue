@@ -1,23 +1,27 @@
 ansible=ansible-playbook main.yml
+hostfile=localhost.ini
+
+check:
+	${ansible} -i ${hostfile} -C -K
 
 all: base podman
 
 base:
-	sudo $(ansible)
+	$(ansible) -i ${hostfile} -K
 
 ostree:
-	sudo $(ansible) --tags base_ostree
+	$(ansible) --tags base_ostree -i ${hostfile} -K
 
 nvidia:
-	sudo $(ansible) --tags base_nvidia 
+	$(ansible) --tags base_nvidia -i ${hostfile} -K
 
 lutris:
-	sudo $(ansible) --tags base_lutris 
+	$(ansible) --tags base_lutris -i ${hostfile} -K
 
 flatpaks:
-	sudo $(ansible) --tags base_flatpaks
+	$(ansible) --tags base_flatpaks -i ${hostfile} -K
 
 configure:
-	sudo $(ansible) --tags base_configure
+	$(ansible) --tags base_configure -i ${hostfile} -K
 
 .PHONY: all

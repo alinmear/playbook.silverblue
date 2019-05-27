@@ -1,25 +1,30 @@
 ---
-- name: 'Silverblue | Deploy - Playbook'
-  # hosts: all
-  hosts: 'localhost'
-  connection: local
+- name: 'Learn about hosts'
+  hosts: all
   gather_facts: true
 
-  #vars:
-
-  vars_files:
-    - vars/setup.yml
-    - vars/base.yml
-
-#  pre_tasks:
-#    - name: PRETASK | Install libselinux-python
-#      shell: |
-#        rpm-ostree install libselinux-python
-
   tasks:
+    - name: Precondition check
+      fail:
+        msg: 'No os variable set, must be silverblue or workstation' # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
+      when: os != 'silverblue' and os != 'workstation'
+    - name: Group hosts
+      group_by:
+          key: os_{{ os }}
 
-  post_tasks:
-
+- name: Workstation | Deploy Playbook
+  hosts: os_workstation
+  gather_facts: false
   roles:
     - base
     #- podman
+
+- name: Silverblue | Deploy Playbook
+  hosts: os_silverblue
+  gather_facts: false
+  roles:
+    - base
+    #- podman
+
+
+
