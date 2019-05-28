@@ -2,7 +2,8 @@
 ostree: {
   base: [
     "tilix",
-    "gnome-tweak-tool"
+    "gnome-tweak-tool",
+    "python3-psutil"
   ],
   optional: [
     "lutris",
@@ -13,7 +14,8 @@ workstation: {
   base: [
     "tilix",
     "gnome-tweak-tool",
-    "toolbox"
+    "toolbox",
+    "python3-psutil"
   ],
   optional: [
     "lutris",
@@ -101,10 +103,43 @@ flatpak: {
 gsettings:
   tap-to-click:
     key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
-    value: true
+    value: "true"
   show-battery-percentage:
-    key: /org/gnome/interface/show-battery-percentage
-    value: true
+    key: /org/gnome/desktop/interface/show-battery-percentage
+    value: "true"
   natural-scroll:
-    key: /org/gnome/desktop/peripherals/touchpad
-    value: false
+    key: /org/gnome/desktop/peripherals/touchpad/natural-scroll
+    value: "false"
+  night-light:
+    key: /org/gnome/settings-daemon/plugins/color/night-light-enabled
+    value: "true"
+  night-light-temperature:
+    key: /org/gnome/settings-daemon/plugins/color/night-light-temperature
+    value: 4500
+  night-light-automatic:
+    key: /org/gnome/settings-daemon/plugins/color/night-light-automatic
+    value: "true"
+  switch-ws1:
+    key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-1
+    value: "['<ALT>1']"
+  switch-ws2:
+    key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-2
+    value: "['<ALT>2']"
+  switch-ws3:
+    key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-3
+    value: "['<ALT>3']"
+  switch-ws4:
+    key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-4
+    value: "['<ALT>4']"
+  move-ws1:
+    key: /org/gnome/desktop/wm/keybindings/move-to-workspace-1
+    value: "['<ALT><SHIFT>1']"
+  move-ws2:
+    key: /org/gnome/desktop/wm/keybindings/move-to-workspace-2
+    value: "['<ALT><SHIFT>2']"
+  move-ws3:
+    key: /org/gnome/desktop/wm/keybindings/move-to-workspace-3
+    value: "['<ALT><SHIFT>3']"
+  move-ws4:
+    key: /org/gnome/desktop/wm/keybindings/move-to-workspace-4
+    value: "['<ALT><SHIFT>4']"

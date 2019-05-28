@@ -8,9 +8,13 @@
       fail:
         msg: 'No os variable set, must be silverblue or workstation' # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
       when: os != 'silverblue' and os != 'workstation'
+      tags:
+        - always
     - name: Group hosts
       group_by:
-          key: os_{{ os }}
+        key: os_{{ os }}
+      tags:
+        - always
 
 - name: Workstation | Deploy Playbook
   hosts: os_workstation
