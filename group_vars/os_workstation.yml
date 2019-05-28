@@ -1,6 +1,6 @@
 base: {
       nvidia: {
-        enable: true
+        enable: false
       },
       flatpaks: {
         enable: true,
@@ -15,6 +15,15 @@ base: {
         flatpak: false
       },
       ostree: {
+        enable: false,
+      },
+      workstation: {
         enable: true,
+      },
+      rpmfusion: {
+        enable: true,
+      },
+      surface: {
+        enable: false,
       }
 }

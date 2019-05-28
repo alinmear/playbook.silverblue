@@ -1,6 +1,6 @@
 # playbook.silverblue
 
-This playbook automates the provisioning of the modular fedora silverblue workstation. The playbook implements two roles for this tasks, base and podman.
+This playbook automates the provisioning of the modular fedora silverblue and regular workstation. The playbook implements two roles for this tasks, base and podman.
 
 ## Getting started
 
@@ -18,7 +18,12 @@ After that you can take use of the `Makefile`.
 
 e.g. run the whole playbook: `sudo make`
 
+The playbook can be run in check mode with `make check`
+
 ## Configuration
+
+By default `make` works mit the localhost.ini inventory. In this file you need to set the `os` variable to either `silverblue` or `workstation`.
+If you want to manage multiple hosts, create an own host inventory and run the playbook with `make hostfile=name-of-your-inventory`
 
 The Base rule has some proper defaults; if you want to overwrite them, do that within `vars/base.yml` or on a per host base within the inventory.
 

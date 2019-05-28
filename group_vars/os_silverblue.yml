@@ -1,0 +1,29 @@
+base: {
+      nvidia: {
+        enable: false
+      },
+      flatpaks: {
+        enable: true,
+      },
+      configure: {
+        enable: true,
+        setInotify: true
+      },
+      lutris: {
+        enable: true,
+        postconfig: true,
+        flatpak: false
+      },
+      ostree: {
+        enable: true,
+      },
+      workstation: {
+        enable: false,
+      },
+      rpmfusion: {
+        enable: true,
+      },
+      surface: {
+        enable: false,
+      }
+}
