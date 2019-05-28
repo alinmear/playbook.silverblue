@@ -1,0 +1,56 @@
+---
+
+- name: PODMAN-VAGRANT | Extend base os via rpm-ostree
+  command: "rpm-ostree install virt-install virt-manager"
+  ignore_errors: yes
+
+- name: PODMAN-VAGRANT | Get rid of pwd prompt for libvirt
+  blockinfile:
+    path: /etc/polkit-1/rules.d/80-libvirt.rules
+    block: |
+      polkit.addRule(function(action, subject) {
+        if (action.id == "org.libvirt.unix.manage" && subject.local && subject.active && subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+        }
+      });
+    create: true
+
+- name: PODMAN-VAGRANT | Create temporary build directory
+  tempfile:
+    state: directory
+    suffix: build
+  register: builddir
+
+- name: Copy additional files for build
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ builddir.path }}/Dockerfile"
+  with_items:
+    - "vagrant-container.yml"
+
+- name: PODMAN-Vagrant | Build Container
+  command: "podman build -t localhost/vagrant-container:latest {{ builddir.path }}"
+
+- name: PODMAN-VAGRANT |  Cleanup temporary build directory
+  file:
+    path: "{{ builddir.path }}"
+    state: absent
+
+
+- name: PODMAN-VAGRANT | Set alias for vagrant
+  blockinfile:
+    block: |
+      alias vagrant='podman run --rm -it \
+        --volume /run/libvirt:/run/libvirt \
+        --volume "${HOME}:${HOME}:rslave" \
+        --env "HOME=${HOME}" \
+        --workdir "$(pwd)" \
+        --net host \
+        --privileged \
+        --security-opt label=disable \
+        --entrypoint /usr/bin/vagrant \
+        localhost/vagrant-container:latest'
+    path: "/etc/profile.d/{{ vars.podman.profile_name }}"
+    create: true
+
+    

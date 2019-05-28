@@ -1,1 +1,8 @@
 ---
+
+- name: PODMAN | Vagrant
+  include: vagrant.yml
+  tags:
+    - podman_vagrant
+  when:
+    vars.podman.vagrant.enable == true
