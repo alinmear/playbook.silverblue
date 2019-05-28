@@ -24,7 +24,4 @@
   gather_facts: false
   roles:
     - base
-    #- podman
-
-
-
+    - podman

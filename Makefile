@@ -24,4 +24,7 @@ flatpaks:
 configure:
 	$(ansible) --tags base_configure -i ${hostfile} -K
 
+vagrant:
+	sudo $(ansible) --tags podman_vagrant
+
 .PHONY: all

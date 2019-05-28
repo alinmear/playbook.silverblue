@@ -1,1 +1,9 @@
 ---
+
+podman: {
+  profile_name: "00_podman_aliases.sh",
+  vagrant: {
+    enable: true
+  }
+}
+
