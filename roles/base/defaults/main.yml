@@ -146,4 +146,7 @@ gsettings:
   move-ws4:
     key: /org/gnome/desktop/wm/keybindings/move-to-workspace-4
     value: "['<ALT><SHIFT>4']"
+  button-layout:
+    key: /org/gnome/desktop/wm/preferences/button-layout
+    value: "'appmenu:minimize,maximize,close'"
   #todo default applications
