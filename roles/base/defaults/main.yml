@@ -119,6 +119,9 @@ gsettings:
   night-light-automatic:
     key: /org/gnome/settings-daemon/plugins/color/night-light-automatic
     value: "true"
+  ambient-enabled:
+    key: /org/gnome/settings-daemon/plugins/power/ambient-enabled
+    value: "false"
   switch-ws1:
     key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-1
     value: "['<ALT>1']"
@@ -143,3 +146,4 @@ gsettings:
   move-ws4:
     key: /org/gnome/desktop/wm/keybindings/move-to-workspace-4
     value: "['<ALT><SHIFT>4']"
+  #todo default applications
