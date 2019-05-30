@@ -67,7 +67,6 @@
   tags:
     - base_surface
   when: vars.base.surface.enable == true
-  
 
 - name: BASE | Dconf Settings
   include: dconf.yml

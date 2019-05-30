@@ -1,6 +1,9 @@
 ---
-#- name: Change dconf settings
-#  dconf: key={{ item.value.key }}
-#    value={{ item.value.value }}
-#  with_dict: "{{ gsettings }}"
-#  ignore_errors: true
+- name: Change dconf settings
+ 
+
+  dconf:
+    key: "{{ item.value.key }}" # required. A dconf key to modify or read from the dconf database.
+    state: present # not required. choices: read;present;absent. The action to take upon the key/value.
+    value: "{{ item.value.value }}"  # not required. Value to set for the specified dconf key. Value should be specified in GVariant format. Due to complexity of this format, it is best to have a look at existing values in the dconf database. Required for C(state=present).
+  with_dict: "{{ gsettings }}"
