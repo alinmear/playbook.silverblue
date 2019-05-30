@@ -15,6 +15,9 @@ ostree:
 nvidia:
 	$(ansible) --tags base_nvidia -i ${hostfile} -K
 
+rpmfusion:
+	$(ansible) --tags base_rpmfusion -i ${hostfile} -K
+
 lutris:
 	$(ansible) --tags base_lutris -i ${hostfile} -K
 
@@ -25,6 +28,6 @@ configure:
 	$(ansible) --tags base_configure -i ${hostfile} -K
 
 vagrant:
-	sudo $(ansible) --tags podman_vagrant
+	$(ansible) --tags podman_vagrant -i ${hostfile} -K
 
 .PHONY: all

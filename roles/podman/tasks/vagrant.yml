@@ -50,7 +50,7 @@
         --security-opt label=disable \
         --entrypoint /usr/bin/vagrant \
         localhost/vagrant-container:latest'
-    path: "/etc/profile.d/{{ vars.podman.profile_name }}"
+    path: "/etc/profile.d/00.silverblue-playbook.sh"
     create: true
 
     
