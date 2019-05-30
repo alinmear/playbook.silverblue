@@ -1,7 +1,7 @@
 ---
 - set_fact:
     nvidiapkg:
-      - kmod-nvidia 
+      - akmod-nvidia 
       - xorg-x11-drv-nvidia
 
 - name: NVIDIA | install rpmfusion
@@ -9,7 +9,7 @@
 
 - name: NVIDIA | rpm-ostree - Install Nvidia
   shell: |
-    rpm-ostree install kmod-nvidia xorg-x11-drv-nvidia
+    rpm-ostree install akmod-nvidia xorg-x11-drv-nvidia
     rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
   # TODO: Better check
   ignore_errors: yes
