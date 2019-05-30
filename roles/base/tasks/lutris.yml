@@ -4,3 +4,16 @@
   command: rpm-ostree install lutris wine
   # TODO: Better check
   ignore_errors: yes
+  when:
+    os == 'silverblue'
+
+- name: LUTRIS | Install via package
+  become: true
+  package:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - lutris
+    - wine
+  when: 
+    os == 'workstation'

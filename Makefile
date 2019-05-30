@@ -1,10 +1,10 @@
 ansible=ansible-playbook main.yml
 hostfile=localhost.ini
 
+all: base podman
+
 check:
 	${ansible} -i ${hostfile} -C -K
-
-all: base podman
 
 base:
 	$(ansible) -i ${hostfile} -K

@@ -1,13 +1,13 @@
 ---
 - name: OSTREE | Install Base
   command: "rpm-ostree install {{ item }}"
-  with_items: "{{ vars.ostree.base }}"
+  with_items: "{{ basepkg }}"
   # TODO: Better check
   ignore_errors: yes
 
 
 - name: OSTREE | Install Optional
   command: rpm-ostree install {{ item }}
-  with_items: "{{ vars.ostree.optional }}"
+  with_items: "{{ optpkg }}"
   # TODO: Better check
   ignore_errors: yes

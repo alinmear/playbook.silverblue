@@ -1,4 +1,9 @@
 ---
+- set_fact:
+    nvidiapkg:
+      - kmod-nvidia 
+      - xorg-x11-drv-nvidia
+
 - name: NVIDIA | install rpmfusion
   include: repo.rpmfusion.yml
 
@@ -8,3 +13,18 @@
     rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
   # TODO: Better check
   ignore_errors: yes
+  when:
+    os == 'silverblue'
+
+- name: NVIDIA | dnf - Install Nvidia
+  become: true
+  package:
+      state: present 
+      name: "{{item}}"
+  with_items:
+    "{{ nvidiapkg }}"
+  when:
+    os == 'workstation'
+
+
+# TODO VDPAU/VAAPI, Vulkan
