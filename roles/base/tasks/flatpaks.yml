@@ -14,11 +14,11 @@
     remote: flathub
     method: system
     state: present
-  with_items: "{{ vars.flatpak.bundles.gnome }}"
+  with_items: "{{ flatpak_bundle_gnome if flatpak_bundle_gnome_extra is not defined else (flatpak_bundle_gnome + flatpak_bundle_gnome_extra)}}"
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.config.bundles.gnome == True
+    flatpak_gnome == True
 
 - name: FLATPAK | Install Bundle Theme
   become: true
@@ -27,11 +27,11 @@
     remote: flathub
     method: system
     state: present
-  with_items: "{{ vars.flatpak.bundles.themes }}"
+  with_items: "{{ flatpak_bundle_themes if flatpak_bundle_themes_extra is not defined else (flatpak_bundle_themes + flatpak_bundle_themes_extra)}}"
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.config.bundles.themes == True
+    flatpak_themes == True
 
 - name: FLATPAK | Install Bundle Multimedia
   become: true
@@ -40,11 +40,11 @@
     remote: flathub
     method: system
     state: present
-  with_items: "{{ vars.flatpak.bundles.multimedia }}"
+  with_items: "{{ flatpak_bundle_multimedia if flatpak_bundle_multimedia_extra is not defined else (flatpak_bundle_multimedia + flatpak_bundle_multimedia_extra)}}"
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.config.bundles.multimedia == True
+    flatpak_multimedia == True
 
 - name: FLATPAK | Install Bundle Messaging
   become: true
@@ -53,11 +53,11 @@
     remote: flathub
     method: system
     state: present
-  with_items: "{{ vars.flatpak.bundles.messaging }}"
+  with_items: "{{ flatpak_bundle_messaging if flatpak_bundle_messaging_extra is not defined else (flatpak_bundle_messaging + flatpak_bundle_messaging_extra)}}"
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.config.bundles.messaging == True
+    flatpak_messaging == True
 
 - name: FLATPAK | Install Bundle Office
   become: true
@@ -66,11 +66,11 @@
     remote: flathub
     method: system
     state: present
-  with_items: "{{ vars.flatpak.bundles.office }}"
+  with_items: "{{ flatpak_bundle_office if flatpak_bundle_office_extra is not defined else (flatpak_bundle_office + flatpak_bundle_office_extra)}}"
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.config.bundles.office == True
+    flatpak_office == True
 
 - name: FLATPAK | Install Bundle Gaming
   become: true
@@ -79,11 +79,11 @@
     remote: flathub
     method: system
     state: present
-  with_items: "{{ vars.flatpak.bundles.gaming }}"
+  with_items: "{{ flatpak_bundle_gaming if flatpak_bundle_gaming_extra is not defined else (flatpak_bundle_gaming + flatpak_bundle_gaming_extra)}}"
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.config.bundles.gaming == True
+    flatpak_gaming == True
 
 
 - name: FLATPAK | Install Bundle Development
@@ -93,8 +93,8 @@
     remote: flathub
     method: system
     state: present
-  with_items: "{{ vars.flatpak.bundles.development }}"
+  with_items: "{{ flatpak_bundle_development if flatpak_bundle_development_extra is not defined else (flatpak_bundle_development + flatpak_bundle_development_extra)}}"
   # TODO: Better check
   ignore_errors: yes
   when:
-    vars.flatpak.config.bundles.development == True
+    flatpak_development == True

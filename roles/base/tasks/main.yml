@@ -4,71 +4,73 @@
   tags:
     - base_rpmfusion
   when:
-    vars.base.rpmfusion.enable == true
+    base_rpmfusion == true
 
 - name: BASE | flatpaks
   include: flatpaks.yml
   tags:
     - base_flatpaks
   when:
-    vars.base.flatpaks.enable == true
+    base_flatpaks == true
 
 - name: BASE | lutris
   include: lutris.yml
   tags:
     - base_lutris
   when:
-    vars.base.lutris.enable == true and vars.base.lutris.flatpak == false
+    base_lutris.enable == true and base_lutris.flatpak == false
 
 - name: BASE | lutris - flatpak
   include: lutris.flatpak.yml
   tags:
     - base_lutris_flatpak
   when:
-    vars.base.lutris.enable == true and vars.base.lutris.flatpak == true
+    base_lutris.enable == true and base_lutris.flatpak == true
 
 - name: BASE | lutris - postconfig
   include: lutris.postconfig.yml
   tags:
     - base_lutris_postconfig
   when:
-    vars.base.lutris.enable == true and vars.base.lutris.postconfig == true
+    base_lutris.enable == true and base_lutris.postconfig == true
 
 - name: BASE | nvidia
   include: nvidia.yml
   tags:
     - base_nvidia
   when:
-    vars.base.nvidia.enable == true
+    base_nvidia == true
 
 - name: BASE | configure
   include: configure.yml
   tags:
     - base_configure
   when:
-    vars.base.configure.enable == true
+    base_configure.enable == true
 
 - name: BASE | rpm-ostree
   include: rpm-ostree.yml
   tags:
     - base_ostree
   when:
-    vars.base.ostree.enable == true
+    os == 'silverblue'
 
 - name: BASE | dnf workstation
   include: workstation.yml
   tags:
     - base_workstation
   when:
-    vars.base.workstation.enable == true
+    os == 'workstation'
 
 - name: BASE | Custom Kernel Surface
   include: surface.yml
   tags:
     - base_surface
-  when: vars.base.surface.enable == true
+  when: base_surface == true
 
 - name: BASE | Dconf Settings
   include: dconf.yml
   tags:
     - base_dconf
+  when:
+    base_dconf == true

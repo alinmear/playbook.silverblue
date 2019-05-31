@@ -1,8 +1,16 @@
 ---
-- name: Workstation | Install packages
+- name: Workstation | Install base packages
   become: true
   package:
     name: "{{ item }}"  
     state: present
   with_items:
-    - "{{ workstation.base }}"  
+    - "{{ basepkg }}" 
+    
+- name: Workstation | Install optional packages
+  become: true
+  package:
+    name: "{{ item }}"  
+    state: present
+  with_items:
+    - "{{ optpkg }}"  

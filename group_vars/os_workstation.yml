@@ -1,29 +1,4 @@
-base: {
-      nvidia: {
-        enable: false
-      },
-      flatpaks: {
-        enable: true,
-      },
-      configure: {
-        enable: true,
-        setInotify: true
-      },
-      lutris: {
-        enable: true,
-        postconfig: true,
-        flatpak: false
-      },
-      ostree: {
-        enable: false,
-      },
-      workstation: {
-        enable: true,
-      },
-      rpmfusion: {
-        enable: true,
-      },
-      surface: {
-        enable: false,
-      }
-}
+
+optpkg:
+  - podman
+  - toolbox
