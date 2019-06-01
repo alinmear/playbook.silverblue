@@ -17,6 +17,7 @@ basepkg:
   - tilix
   - gnome-tweak-tool
   - python3-psutil
+  - ffmpeg
 
 optpkg:
 
