@@ -27,6 +27,7 @@ flatpak_gnome: true
 flatpak_bundle_gnome:
   - com.github.wwmm.pulseeffects
   - org.gabmus.hydrapaper
+  - org.gnome.eog
   - org.gimp.GIMP
   - org.gnome.Boxes
   - org.gnome.Builder
